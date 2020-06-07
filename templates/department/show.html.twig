@@ -5,8 +5,8 @@
 
 {% block body %}
     <div class="container">
-        {%  for student in all_student %}
-                {{ student.Firstname  }}
+        {% for student in all_student %}
+            {{ student.Firstname }}
 
         {% endfor %}
     </div>

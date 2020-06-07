@@ -1,101 +1,101 @@
 <?php
 
-namespace App\Entity;
+    namespace App\Entity;
 
-use App\Repository\DepartmentRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * @ORM\Entity(repositoryClass=DepartmentRepository::class)
- */
-class Department
-{
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    use App\Repository\DepartmentRepository;
+    use Doctrine\Common\Collections\ArrayCollection;
+    use Doctrine\Common\Collections\Collection;
+    use Doctrine\ORM\Mapping as ORM;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Entity(repositoryClass=DepartmentRepository::class)
      */
-    private $name;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $capacity;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Student::class, mappedBy="department")
-     */
-    private $students;
-
-    public function __construct()
+    class Department
     {
-        $this->students = new ArrayCollection();
-    }
+        /**
+         * @ORM\Id()
+         * @ORM\GeneratedValue()
+         * @ORM\Column(type="integer")
+         */
+        private $id;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+        /**
+         * @ORM\Column(type="string", length=255)
+         */
+        private $name;
 
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
+        /**
+         * @ORM\Column(type="integer")
+         */
+        private $capacity;
 
-    public function setName(string $name): self
-    {
-        $this->name = $name;
+        /**
+         * @ORM\OneToMany(targetEntity=Student::class, mappedBy="department")
+         */
+        private $students;
 
-        return $this;
-    }
-
-    public function getCapacity(): ?int
-    {
-        return $this->capacity;
-    }
-
-    public function setCapacity(int $capacity): self
-    {
-        $this->capacity = $capacity;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Student[]
-     */
-    public function getStudents(): Collection
-    {
-        return $this->students;
-    }
-
-    public function addStudent(Student $student): self
-    {
-        if (!$this->students->contains($student)) {
-            $this->students[] = $student;
-            $student->setDepartment($this);
+        public function __construct()
+        {
+            $this->students = new ArrayCollection();
         }
 
-        return $this;
-    }
+        public function getId(): ?int
+        {
+            return $this->id;
+        }
 
-    public function removeStudent(Student $student): self
-    {
-        if ($this->students->contains($student)) {
-            $this->students->removeElement($student);
-            // set the owning side to null (unless already changed)
-            if ($student->getDepartment() === $this) {
-                $student->setDepartment(null);
+        public function getName(): ?string
+        {
+            return $this->name;
+        }
+
+        public function setName(string $name): self
+        {
+            $this->name = $name;
+
+            return $this;
+        }
+
+        public function getCapacity(): ?int
+        {
+            return $this->capacity;
+        }
+
+        public function setCapacity(int $capacity): self
+        {
+            $this->capacity = $capacity;
+
+            return $this;
+        }
+
+        /**
+         * @return Collection|Student[]
+         */
+        public function getStudents(): Collection
+        {
+            return $this->students;
+        }
+
+        public function addStudent(Student $student): self
+        {
+            if (!$this->students->contains($student)) {
+                $this->students[] = $student;
+                $student->setDepartment($this);
             }
+
+            return $this;
         }
 
-        return $this;
+        public function removeStudent(Student $student): self
+        {
+            if ($this->students->contains($student)) {
+                $this->students->removeElement($student);
+                // set the owning side to null (unless already changed)
+                if ($student->getDepartment() === $this) {
+                    $student->setDepartment(null);
+                }
+            }
+
+            return $this;
+        }
     }
-}

@@ -23,8 +23,8 @@
                 <label>Choisir le departement</label>
                 <select name="depatment_id" class="form-control" id="">
 
-                    {%  for department in all_department %}
-                        <option value="{{ department.id}} ">{{ department.name}} </option>
+                    {% for department in all_department %}
+                        <option value="{{ department.id }} ">{{ department.name }} </option>
                     {% endfor %}
 
                 </select>

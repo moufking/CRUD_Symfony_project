@@ -4,43 +4,44 @@
 {% block title %}Liste des étudiants{% endblock %}
 
 {% block body %}
-<div class="container">
-  <br>
-  <a href="{{ path('create_student') }} " class="btn btn-primary">Ajouter un étudiant</a>
-  <a href="{{ path('create_department') }} " class="btn btn-success">Ajouter un departement</a><br>
-  <br>
+    <div class="container">
+        <br>
+        <a href="{{ path('create_student') }} " class="btn btn-primary">Ajouter un étudiant</a>
+        <a href="{{ path('create_department') }} " class="btn btn-success">Ajouter un departement</a><br>
+        <br>
 
 
-  <table class="table">
-    <thead>
-    <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Firstname</th>
-      <th scope="col">Lastname</th>
-      <th scope="col">Numero</th>
-      <th scope="col">Departement</th>
-      <th scope="col">Action</th>
-    </tr>
-    </thead>
-    <tbody>
-    {%  for student in all_student %}
-      <tr>
-        <td>{{ student.id }}</td>
-        <td>{{ student.Firstname }}</td>
-        <td>{{ student.Lastname  }}</td>
-        <td>{{ student.NumEtud }}</td>
-        <td>{{ student.getDepartment().name }}</td>
-        <th scope="row">
-          <a href="{{ path('show_student',{'id':student.id  }) }}" class="btn btn-primary"> Détails</a>
-          <a href="{{ path('update_student',{'id':student.id  }) }}" class="btn btn-success"> Modifier</a>
-          <a onclick="return confirm('Etes vous sure?') " href="{{ path('delete_student',{ 'id':student.id}) }}" class="btn btn-danger"> Supprimer</a>
-        </th>
-      </tr>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Firstname</th>
+                <th scope="col">Lastname</th>
+                <th scope="col">Numero</th>
+                <th scope="col">Departement</th>
+                <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for student in all_student %}
+                <tr>
+                    <td>{{ student.id }}</td>
+                    <td>{{ student.Firstname }}</td>
+                    <td>{{ student.Lastname }}</td>
+                    <td>{{ student.NumEtud }}</td>
+                    <td>{{ student.getDepartment().name }}</td>
+                    <th scope="row">
+                        <a href="{{ path('show_student',{'id':student.id  }) }}" class="btn btn-primary"> Détails</a>
+                        <a href="{{ path('update_student',{'id':student.id  }) }}" class="btn btn-success"> Modifier</a>
+                        <a onclick="return confirm('Etes vous sure?') "
+                           href="{{ path('delete_student',{ 'id':student.id}) }}" class="btn btn-danger"> Supprimer</a>
+                    </th>
+                </tr>
 
-    {% endfor %}
+            {% endfor %}
 
-    </tbody>
-  </table>
-</div>
+            </tbody>
+        </table>
+    </div>
 
 {% endblock %}
