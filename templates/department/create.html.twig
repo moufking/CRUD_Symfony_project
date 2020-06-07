@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Liste des departements{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <form METHOD="post" action="{{ path('store_department') }}">
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" name="name" class="form-control" placeholder="Entrer le nom">
+            </div>
+            <div class="form-group">
+                <label>Capacity</label>
+                <input type="number" name="capacity" class="form-control"
+                       placeholder="Entrer la capacity">
+            </div>
+            <button type="submit" class="btn btn-primary">Sauvegarder</button>
+        </form>
+    </div>
+
+
+
+{% endblock %}

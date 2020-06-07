@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Liste des étudiants{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h3>Information sur l'étudiant</h3>
+        <p>Nom :  :{{ student.Firstname }}</p>
+        <p>Prenom :  :{{ student.Firstname }}</p>
+        <p>Numero :  :{{ student.NumEtud }}</p>
+        <p> Nom Département :  :{{ student.getDepartment().name }}</p>
+        <p> Capacité du  Département :  :{{ student.getDepartment().capacity}}</p>
+        <a href="{{ path('list_student') }}" class="btn btn-primary"> Retour</a>
+    </div>
+
+
+
+
+{% endblock %}

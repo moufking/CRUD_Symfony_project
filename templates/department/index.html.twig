@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Liste des departements{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <br>
+        <a href="{{ path('list_student') }} " class="btn btn-primary">Voir la liste des étudiants</a>
+        <br>
+        <br>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Capacity</th>
+            </tr>
+            </thead>
+            <tbody>
+            {%  for department in all_department %}
+                <tr>
+                    <td>{{ department.id }}</td>
+                    <td>{{ department.name }}</td>
+                    <td>{{ department.capacity }}</td>
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

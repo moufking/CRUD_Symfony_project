@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Liste des étudiants{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <form METHOD="post" action="{{ path('store_student') }}">
+            <div class="form-group">
+                <label>Firstname</label>
+                <input type="text" name="Firstname" class="form-control" placeholder="Entrer le nom">
+            </div>
+            <div class="form-group">
+                <label>Lastname</label>
+                <input type="text" name="Lastname" class="form-control" id="exampleInputPassword1"
+                       placeholder="Entrer le prenom">
+            </div>
+            <div class="form-group">
+                <label>Numero de l'etudiant</label>
+                <input type="integer" name="num_etud" class="form-control" placeholder="Numero de l'étudiant">
+            </div>
+            <div class="form-group">
+                <label>Choisir le departement</label>
+                <select name="depatment_id" class="form-control" id="">
+
+                    {%  for department in all_department %}
+                        <option value="{{ department.id}} ">{{ department.name}} </option>
+                    {% endfor %}
+
+                </select>
+
+            </div>
+            <button type="submit" class="btn btn-primary">Sauvegarder</button>
+        </form>
+    </div>
+
+
+
+{% endblock %}

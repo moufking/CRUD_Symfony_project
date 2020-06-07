@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Liste des étudiants{% endblock %}
+
+{% block body %}
+    <div class="container">
+        {%  for student in all_student %}
+                {{ student.Firstname  }}
+
+        {% endfor %}
+    </div>
+
+
+
+
+{% endblock %}
